@@ -3,232 +3,250 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>쌍둥이맘 육아 Vlog</title>
+  <title>하진 & 하준 블로그</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
-      background: #ffffff;
-      color: #0f0f0f;
+      font-family: 'Malgun Gothic', 'Segoe UI', sans-serif;
+      background: #f5f6f7;
+      color: #333;
     }
 
-    /* 상단 헤더 (유튜브 느낌) */
-    header {
-      display: flex;
-      align-items: center;
+    /* 상단 네이버 스타일 바 */
+    .top-bar {
+      background: #03c75a;
       padding: 12px 24px;
-      background: #ffffff;
-      border-bottom: 1px solid #e5e5e5;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .logo {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 22px;
-      font-weight: 800;
-      color: #0f0f0f;
+      gap: 10px;
     }
-    /* 유튜브 로고 모양 (빨간 둥근 사각형 + 재생 삼각형) */
-    .yt-icon {
-      width: 40px;
-      height: 28px;
-      background: #ff0000;
+    .naver-logo {
+      background: white;
+      color: #03c75a;
+      font-weight: 900;
+      font-size: 22px;
+      padding: 2px 10px;
+      border-radius: 6px;
+      letter-spacing: -1px;
+    }
+    .top-bar .menu {
+      color: white;
+      font-size: 15px;
+      margin-left: 20px;
+    }
+
+    /* 검색창 */
+    .search-area {
+      background: white;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .search-box {
+      display: flex;
+      width: 100%;
+      max-width: 600px;
+      border: 2px solid #03c75a;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .search-box input {
+      flex: 1;
+      border: none;
+      padding: 12px 14px;
+      font-size: 15px;
+      outline: none;
+    }
+    .search-box button {
+      background: #03c75a;
+      color: white;
+      border: none;
+      padding: 0 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* 블로그 헤더 (프로필) */
+    .blog-header {
+      max-width: 900px;
+      margin: 24px auto;
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .profile-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #03c75a, #00a344);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      flex-shrink: 0;
+    }
+    .blog-header h1 { font-size: 24px; margin-bottom: 6px; }
+    .blog-header .desc { color: #888; font-size: 14px; }
+    .neighbor-btn {
+      margin-left: auto;
+      background: #03c75a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .neighbor-btn:hover { background: #02b350; }
+
+    /* 카테고리 */
+    .category {
+      max-width: 900px;
+      margin: 0 auto 20px;
+      background: white;
+      border-radius: 10px;
+      padding: 16px 24px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      font-size: 15px;
+      color: #555;
+    }
+    .category span { cursor: pointer; }
+    .category span:hover { color: #03c75a; font-weight: bold; }
+    .category .active { color: #03c75a; font-weight: bold; }
+
+    /* 블로그 글 목록 */
+    .posts {
+      max-width: 900px;
+      margin: 0 auto;
+      padding-bottom: 40px;
+    }
+    .post {
+      background: white;
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      transition: transform 0.15s;
+    }
+    .post:hover { transform: translateY(-3px); }
+    .post-thumb {
+      width: 140px;
+      height: 100px;
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .yt-icon::after {
-      content: "";
-      border-left: 12px solid white;
-      border-top: 8px solid transparent;
-      border-bottom: 8px solid transparent;
-      margin-left: 3px;
-    }
-
-    /* 배너 (채널 아트) */
-    .banner {
-      height: 220px;
-      background: linear-gradient(120deg, #ff0000, #cc0000, #990000);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .banner h1 {
-      font-size: 46px;
-      color: #ffffff;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-      animation: pop 2s ease-in-out infinite;
-    }
-    .banner p {
-      font-size: 18px;
-      color: #ffe5e5;
-      margin-top: 10px;
-    }
-    @keyframes pop {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    /* 떠다니는 이모지 */
-    .floating {
-      position: absolute;
-      font-size: 30px;
-      animation: float 4s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-25px); }
-    }
-
-    /* 채널 프로필 */
-    .channel-info {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 24px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .avatar {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #ff0000, #990000);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
+      font-size: 44px;
       flex-shrink: 0;
     }
-    .channel-info h2 { font-size: 26px; }
-    .channel-info .sub { color: #606060; font-size: 14px; margin-top: 4px; }
-    .subscribe {
-      margin-left: auto;
-      background: #ff0000;
-      color: white;
-      border: none;
-      padding: 10px 22px;
-      border-radius: 20px;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
+    .p1 { background: #e8f9ef; }
+    .p2 { background: #fff4e0; }
+    .p3 { background: #e5f2ff; }
+    .p4 { background: #fce8f0; }
+    .post-content h2 { font-size: 18px; margin-bottom: 8px; }
+    .post-content p { color: #666; font-size: 14px; line-height: 1.6; }
+    .post-content .info {
+      color: #aaa;
+      font-size: 13px;
+      margin-top: 10px;
     }
-    .subscribe:hover { background: #cc0000; }
-
-    /* 영상 목록 */
-    .videos {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
-      padding: 24px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .card {
-      background: white;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
-      cursor: pointer;
-    }
-    .card:hover { transform: translateY(-6px); }
-    .thumb {
-      height: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 50px;
-    }
-    .t1 { background: linear-gradient(135deg, #ff5252, #b71c1c); }
-    .t2 { background: linear-gradient(135deg, #ff8a80, #d50000); }
-    .t3 { background: linear-gradient(135deg, #ff1744, #7f0000); }
-    .t4 { background: linear-gradient(135deg, #ff6f60, #c62828); }
-    .card-body { padding: 12px 14px; }
-    .card-body h3 { font-size: 16px; margin-bottom: 6px; }
-    .card-body .meta { color: #606060; font-size: 13px; }
+    .post-content .info .heart { color: #03c75a; }
 
     footer {
       text-align: center;
-      padding: 30px;
-      color: #909090;
+      padding: 20px;
+      color: #aaa;
       font-size: 13px;
     }
   </style>
 </head>
 <body>
 
-  <!-- 상단 헤더 -->
-  <header>
-    <div class="logo">
-      <div class="yt-icon"></div>
-      <span>HAJIN &amp; HAJUN</span>
-    </div>
-  </header>
-
-  <!-- 배너 -->
-  <div class="banner">
-    <span class="floating" style="left:10%; top:30%;">🍼</span>
-    <span class="floating" style="left:25%; top:60%; animation-delay:1s;">🧸</span>
-    <span class="floating" style="right:15%; top:25%; animation-delay:0.5s;">⭐</span>
-    <span class="floating" style="right:28%; top:65%; animation-delay:1.5s;">🎈</span>
-    <h1>HAJIN &amp; HAJUN</h1>
-    <p>하진이와 하준이의 알콩달콩 성장 브이로그 💕</p>
+  <!-- 상단 바 -->
+  <div class="top-bar">
+    <span class="naver-logo">NAVER</span>
+    <span class="menu">블로그</span>
   </div>
 
-  <!-- 채널 정보 -->
-  <div class="channel-info">
-    <div class="avatar">👶</div>
+  <!-- 검색창 -->
+  <div class="search-area">
+    <div class="search-box">
+      <input type="text" placeholder="하진이 하준이 성장일기를 검색해보세요">
+      <button>🔍</button>
+    </div>
+  </div>
+
+  <!-- 블로그 프로필 -->
+  <div class="blog-header">
+    <div class="profile-img">👶</div>
     <div>
-      <h2>HAJIN &amp; HAJUN</h2>
-      <div class="sub">구독자 1.2만명 · 동영상 24개</div>
+      <h1>하진 &amp; 하준 육아일기</h1>
+      <div class="desc">두 아이와 함께하는 알콩달콩 성장 기록 🌿</div>
     </div>
-    <button class="subscribe">구독</button>
+    <button class="neighbor-btn">이웃추가 +</button>
   </div>
 
-  <!-- 영상 목록 -->
-  <div class="videos">
-    <div class="card">
-      <div class="thumb t1">🍼</div>
-      <div class="card-body">
-        <h3>하진이 첫 이유식 도전기!</h3>
-        <div class="meta">조회수 3.4천회 · 2일 전</div>
+  <!-- 카테고리 -->
+  <div class="category">
+    <span class="active">전체보기</span>
+    <span>이유식 일기</span>
+    <span>바깥 나들이</span>
+    <span>성장 기록</span>
+    <span>육아 꿀팁</span>
+  </div>
+
+  <!-- 블로그 글 목록 -->
+  <div class="posts">
+    <div class="post">
+      <div class="post-thumb p1">🍼</div>
+      <div class="post-content">
+        <h2>하진이 첫 이유식 도전기!</h2>
+        <p>드디어 하진이가 이유식을 시작했어요. 첫 숟가락에 오만가지 표정을 다 짓는 모습이 어찌나 귀엽던지...</p>
+        <div class="info">2일 전 · 댓글 12 · <span class="heart">♥</span> 공감 34</div>
       </div>
     </div>
-    <div class="card">
-      <div class="thumb t2">🧸</div>
-      <div class="card-body">
-        <h3>하준이랑 놀이터 나들이 🎠</h3>
-        <div class="meta">조회수 5.1천회 · 5일 전</div>
+
+    <div class="post">
+      <div class="post-thumb p2">🎠</div>
+      <div class="post-content">
+        <h2>하준이랑 놀이터 나들이</h2>
+        <p>날씨가 좋아서 하준이랑 동네 놀이터에 다녀왔어요. 미끄럼틀 앞에서 신나서 방방 뛰는 모습이 최고!</p>
+        <div class="info">5일 전 · 댓글 8 · <span class="heart">♥</span> 공감 51</div>
       </div>
     </div>
-    <div class="card">
-      <div class="thumb t3">🛁</div>
-      <div class="card-body">
-        <h3>목욕 시간은 즐거워~ 첨벙첨벙</h3>
-        <div class="meta">조회수 2.8천회 · 1주 전</div>
+
+    <div class="post">
+      <div class="post-thumb p3">🛁</div>
+      <div class="post-content">
+        <h2>목욕 시간은 즐거워~ 첨벙첨벙</h2>
+        <p>두 아이 목욕시키기는 매번 전쟁이지만, 물놀이 장난감 하나면 세상 행복한 표정이 돼요.</p>
+        <div class="info">1주 전 · 댓글 5 · <span class="heart">♥</span> 공감 28</div>
       </div>
     </div>
-    <div class="card">
-      <div class="thumb t4">🎂</div>
-      <div class="card-body">
-        <h3>하진이 100일 파티 대공개!</h3>
-        <div class="meta">조회수 8.9천회 · 2주 전</div>
+
+    <div class="post">
+      <div class="post-thumb p4">🎂</div>
+      <div class="post-content">
+        <h2>하진이 100일 파티 대공개!</h2>
+        <p>벌써 우리 하진이가 태어난 지 100일! 조촐하게 준비한 100일상과 그날의 소중한 순간들을 남겨봅니다.</p>
+        <div class="info">2주 전 · 댓글 20 · <span class="heart">♥</span> 공감 89</div>
       </div>
     </div>
   </div>
 
   <footer>
-    © 2026 HAJIN &amp; HAJUN Family Vlog 🌸
+    © 2026 하진 &amp; 하준 육아일기 · powered by NAVER Blog
   </footer>
 
 </body>
